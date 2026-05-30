@@ -1,75 +1,92 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pawan ❤️ Khwahish</title>
-
-<style>
+<title>Pawan ❤️ Khwahish</title><style>
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Arial',sans-serif;
 }
 
 body{
+font-family:'Arial',sans-serif;
 background:linear-gradient(135deg,#ff9a9e,#fad0c4);
 overflow:hidden;
 color:white;
+text-align:center;
 }
 
 .page{
 display:none;
-width:100%;
-height:100vh;
-padding:30px;
+min-height:100vh;
+padding:40px 20px;
 justify-content:center;
 align-items:center;
 flex-direction:column;
-text-align:center;
 }
 
 .active{
 display:flex;
+animation:fadeIn 1.2s;
 }
 
 .card{
 background:rgba(255,255,255,0.15);
+backdrop-filter:blur(10px);
 padding:30px;
 border-radius:25px;
-backdrop-filter:blur(10px);
-max-width:700px;
-}
-
-input{
-padding:12px;
-border:none;
-border-radius:20px;
-width:250px;
-margin-top:15px;
-text-align:center;
-}
-
-button{
-padding:12px 25px;
-border:none;
-border-radius:25px;
-background:white;
-color:#ff4d79;
-font-weight:bold;
-margin-top:20px;
-cursor:pointer;
+max-width:850px;
+box-shadow:0 8px 25px rgba(0,0,0,0.2);
 }
 
 h1{
-margin-bottom:15px;
+margin-bottom:20px;
+font-size:2.2rem;
+}
+
+p{
+font-size:1.1rem;
+line-height:1.8;
+}
+
+button{
+margin-top:25px;
+padding:12px 25px;
+border:none;
+border-radius:30px;
+font-size:18px;
+font-weight:bold;
+background:white;
+color:#ff4d79;
+cursor:pointer;
+}
+
+.gallery img{
+width:250px;
+height:320px;
+object-fit:cover;
+border-radius:25px;
+margin:10px;
+border:4px solid white;
+box-shadow:0 8px 20px rgba(0,0,0,0.3);
+transition:0.4s;
+}
+
+.gallery img:hover{
+transform:scale(1.05);
+}
+
+@keyframes fadeIn{
+from{opacity:0;}
+to{opacity:1;}
 }
 
 .heart{
 position:fixed;
 font-size:20px;
 animation:float 6s linear infinite;
+pointer-events:none;
 }
 
 @keyframes float{
@@ -77,143 +94,247 @@ animation:float 6s linear infinite;
 100%{transform:translateY(-100px);}
 }
 
-.fade{
-animation:fade 2s;
+.bigheart{
+font-size:90px;
+animation:pulse 1s infinite;
 }
 
-@keyframes fade{
-from{opacity:0;}
-to{opacity:1;}
+@keyframes pulse{
+50%{transform:scale(1.1);}
 }
-</style>
-</head>
-
-<body>
-
-<div class="page active" id="page1">
-<div class="card fade">
-<h1>🔒 Accessing Pawan's Heart</h1>
-<p>Security System Activated ❤️</p>
-
-<input type="password" id="pass" placeholder="Enter Password">
-
-<br>
-
-<button onclick="checkPass()">Unlock ❤️</button>
+</style></head><body><div id="page1" class="page active">
+<div class="card">
+<h1>❤️ Accessing Pawan's Heart ❤️</h1>
+<p>Loading Special Memories...</p>
+<h2 id="loading">0%</h2>
 </div>
-</div>
-
-<div class="page" id="page2">
-<div class="card fade">
-<h1>❤️ Heart Scanner ❤️</h1>
-
-<p id="scanText">Starting Scan...</p>
-
-<br>
-
-<button onclick="showPage(3)">Continue 🎬</button>
-</div>
-</div>
-
-<div class="page" id="page3">
-<div class="card fade">
-<h1>🎬 Every Story Begins Somewhere...</h1>
-
-<p style="line-height:1.8">
-
-Ours didn't begin with fireworks.
-
-It didn't begin with some dramatic movie scene.
-
-It began quietly.
-
-A conversation.
-
-A few messages.
-
-A few moments.
-
-Nothing extraordinary.
-
-Yet somehow those small moments became memories.
-
-And those memories slowly became something I never wanted to lose.
-
-❤️
-
+</div><div id="page2" class="page">
+<div class="card">
+<h1>✨ Once Upon A Time ✨</h1>
+<p>
+Every beautiful story starts unexpectedly.
+Among thousands of people, millions of conversations,
+and endless days, somehow two souls crossed paths.
+Maybe it was destiny, maybe luck, or maybe the universe
+simply decided that some people are meant to meet.
 </p>
-
-<br>
-
-<button>Next ➜</button>
+<button onclick="nextPage(3)">Continue ❤️</button>
+</div>
+</div><div id="page3" class="page">
+<div class="card">
+<h1>💌 A Special Person 💌</h1>
+<p>
+Some people enter our lives and change nothing.
+Some people enter and change everything.
+The smiles become brighter,
+the days become lighter,
+and even ordinary moments become unforgettable.
+That's what makes someone special.
+</p>
+<button onclick="nextPage(4)">Next 💕</button>
+</div>
+</div><div id="page4" class="page">
+<div class="card">
+<h1>📸 Memory Gallery - Part 1 📸</h1><div class="gallery">
+<img src="Screenshot_20260509_131059~2.jpg">
+<img src="Snapchat-2004632393.jpg">
+</div><p>
+Every photo holds a memory.
+Every memory holds a feeling.
+And every feeling tells a story that words alone can never explain.
+</p><button onclick="nextPage(5)">Next ❤️</button>
 
 </div>
-</div>
-
-<script>
-
-function showPage(num){
-document.querySelectorAll('.page').forEach(p=>{
-p.classList.remove('active');
-});
-
-document.getElementById('page'+num).classList.add('active');
-}
-
-function checkPass(){
-
-let pass=document.getElementById('pass').value;
-
-if(pass.toLowerCase()=="khwahish"){
-
-showPage(2);
-
-startScan();
-
-}else{
-
-alert("Wrong Password ❤️");
-}
-}
-
-function startScan(){
-
-let lines=[
-"Searching happiness...",
-"Searching comfort...",
-"Searching favorite person...",
-"Scanning heart...",
-"Match Found ❤️ KHWAHISH ❤️"
-];
-
-let i=0;
-
+</div><script>
+let load=0;
 let interval=setInterval(()=>{
+load++;
+document.getElementById("loading").innerText=load+"%";
 
-document.getElementById("scanText").innerHTML=lines[i];
-
-i++;
-
-if(i>=lines.length){
-
+if(load>=100){
 clearInterval(interval);
+document.getElementById("page1").classList.remove("active");
+document.getElementById("page2").classList.add("active");
 }
+},40);
 
-},1500);
-
+function nextPage(num){
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+document.getElementById("page"+num).classList.add("active");
 }
 
 setInterval(()=>{
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤️";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(Math.random()*20+15)+"px";
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},6000);
+},300);
+</script>
+<div id="page5" class="page">
+<div class="card">
+<h1>🎬 Cinematic Memories 🎬</h1><div class="gallery">
+<img src="IMG-20260508-WA0058.jpg">
+<img src="Snapchat-274793691.jpg">
+</div><p>
+Some moments never need filters.
+Some smiles never need explanations.
+Some memories become so precious that even years later,
+they still bring the same happiness.These pictures aren't just images.
+They are little pieces of time that will never come back,
+which is exactly what makes them so special.
+
+</p><button onclick="nextPage(6)">Continue 💖</button>
+
+</div>
+</div><div id="page6" class="page">
+<div class="card">
+<h1>💞 A Little Message 💞</h1><p>
+Life gives us thousands of conversations,
+but only a few become unforgettable.Thank you for every laugh,
+every late-night conversation,
+every smile,
+every memory,
+and every little moment that became a reason to be happy.
+
+The best part about memories is that
+they stay with us forever,
+even when time keeps moving forward.
+
+</p><button onclick="nextPage(7)">Next ❤️</button>
+
+</div>
+</div><div id="page7" class="page">
+<div class="card">
+<h1>📷 Final Memory Frame 📷</h1><div class="gallery">
+<img src="Snapchat-501018633.jpg">
+</div><p>
+One picture.
+A thousand emotions.Sometimes a single photograph holds more memories
+than an entire album.
+
+It captures a moment,
+a feeling,
+and a story that words can never fully explain.
+
+</p><button onclick="nextPage(8)">Continue 💕</button>
+
+</div>
+</div><div id="page8" class="page">
+<div class="card">
+<h1>🌙 Late Night Thoughts 🌙</h1><p>
+Have you ever looked back at old memories and smiled?Not because everything was perfect,
+but because those moments were real.
+
+The people,
+the laughter,
+the conversations,
+the feelings...
+
+Everything became a part of a story
+that can never be repeated exactly the same way again.
+
+</p><button onclick="nextPage(9)">Next 💖</button>
+
+</div>
+</div>
+<div id="page9" class="page">
+<div class="card"><h1>💌 A Letter For You 💌</h1><p>Dear Pawan,
+
+I don't think you'll ever truly understand how much you mean to me.
+
+Some people come into our lives and leave memories.
+
+Some leave lessons.
+
+But very few leave a permanent place in our hearts.
+
+You became one of those rare people.
+
+The kind of person who can make a bad day feel lighter.
+
+The kind of person who can make ordinary moments feel special.
+
+The kind of person whose presence becomes a comfort.
+
+Thank you for every conversation.
+
+Thank you for every laugh.
+
+Thank you for every memory.
+
+Thank you for being part of my story.
+
+And thank you for being exactly who you are.
+
+❤️
+
+</p><button onclick="nextPage(10)">
+One Last Thing ❤️
+</button></div>
+</div><div id="page10" class="page"><div class="card"><div class="bigheart">❤️</div><h1>Pawan + Khwahish</h1><p style="font-size:22px;line-height:2;">Out of all the people I have met...
+
+Out of all the conversations I have had...
+
+Out of all the memories I have made...
+
+You became one of my favorite chapters.
+
+Some people become memories.
+
+You became home.
+
+❤️
+
+No matter where life takes us,
+
+I will always be grateful for every moment we shared.
+
+Thank you for existing.
+
+Thank you for being you.
+
+❤️
+
+Forever Yours,
+
+Khwahish
+
+</p><br><button onclick="showGift()">
+🎁 Open Secret Gift
+</button><div id="gift" style="display:none;margin-top:20px;font-size:24px;">🌹 Surprise 🌹
+
+You are loved more than you know.
+
+You are appreciated more than you realize.
+
+And you are special in more ways than words can explain.
+
+❤️❤️❤️
+
+</div></div></div>
+<script>
+
+function showGift(){
+
+document.getElementById("gift").style.display="block";
+
+for(let i=0;i<30;i++){
 
 let heart=document.createElement("div");
 
-heart.classList.add("heart");
+heart.className="heart";
 
 heart.innerHTML="❤️";
 
 heart.style.left=Math.random()*100+"vw";
 
-heart.style.fontSize=(Math.random()*20+15)+"px";
+heart.style.fontSize=(Math.random()*25+20)+"px";
 
 document.body.appendChild(heart);
 
@@ -221,7 +342,8 @@ setTimeout(()=>{
 heart.remove();
 },6000);
 
-},400);
+}
+}
 
 </script>
 
