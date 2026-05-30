@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pawan ❤️ Khwahish</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Arial',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+overflow:hidden;
+color:white;
+}
+
+.page{
+display:none;
+width:100%;
+height:100vh;
+padding:30px;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+}
+
+.active{
+display:flex;
+}
+
+.card{
+background:rgba(255,255,255,0.15);
+padding:30px;
+border-radius:25px;
+backdrop-filter:blur(10px);
+max-width:700px;
+}
+
+input{
+padding:12px;
+border:none;
+border-radius:20px;
+width:250px;
+margin-top:15px;
+text-align:center;
+}
+
+button{
+padding:12px 25px;
+border:none;
+border-radius:25px;
+background:white;
+color:#ff4d79;
+font-weight:bold;
+margin-top:20px;
+cursor:pointer;
+}
+
+h1{
+margin-bottom:15px;
+}
+
+.heart{
+position:fixed;
+font-size:20px;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh);}
+100%{transform:translateY(-100px);}
+}
+
+.fade{
+animation:fade 2s;
+}
+
+@keyframes fade{
+from{opacity:0;}
+to{opacity:1;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="page active" id="page1">
+<div class="card fade">
+<h1>🔒 Accessing Pawan's Heart</h1>
+<p>Security System Activated ❤️</p>
+
+<input type="password" id="pass" placeholder="Enter Password">
+
+<br>
+
+<button onclick="checkPass()">Unlock ❤️</button>
+</div>
+</div>
+
+<div class="page" id="page2">
+<div class="card fade">
+<h1>❤️ Heart Scanner ❤️</h1>
+
+<p id="scanText">Starting Scan...</p>
+
+<br>
+
+<button onclick="showPage(3)">Continue 🎬</button>
+</div>
+</div>
+
+<div class="page" id="page3">
+<div class="card fade">
+<h1>🎬 Every Story Begins Somewhere...</h1>
+
+<p style="line-height:1.8">
+
+Ours didn't begin with fireworks.
+
+It didn't begin with some dramatic movie scene.
+
+It began quietly.
+
+A conversation.
+
+A few messages.
+
+A few moments.
+
+Nothing extraordinary.
+
+Yet somehow those small moments became memories.
+
+And those memories slowly became something I never wanted to lose.
+
+❤️
+
+</p>
+
+<br>
+
+<button>Next ➜</button>
+
+</div>
+</div>
+
+<script>
+
+function showPage(num){
+document.querySelectorAll('.page').forEach(p=>{
+p.classList.remove('active');
+});
+
+document.getElementById('page'+num).classList.add('active');
+}
+
+function checkPass(){
+
+let pass=document.getElementById('pass').value;
+
+if(pass.toLowerCase()=="khwahish"){
+
+showPage(2);
+
+startScan();
+
+}else{
+
+alert("Wrong Password ❤️");
+}
+}
+
+function startScan(){
+
+let lines=[
+"Searching happiness...",
+"Searching comfort...",
+"Searching favorite person...",
+"Scanning heart...",
+"Match Found ❤️ KHWAHISH ❤️"
+];
+
+let i=0;
+
+let interval=setInterval(()=>{
+
+document.getElementById("scanText").innerHTML=lines[i];
+
+i++;
+
+if(i>=lines.length){
+
+clearInterval(interval);
+}
+
+},1500);
+
+}
+
+setInterval(()=>{
+
+let heart=document.createElement("div");
+
+heart.classList.add("heart");
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=(Math.random()*20+15)+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},6000);
+
+},400);
+
+</script>
+
+</body>
+</html>
